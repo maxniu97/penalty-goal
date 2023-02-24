@@ -2,6 +2,9 @@
   <div>
     <h1>{{ percentage }}</h1>
   </div>
+  <div class="slider">
+    <Slider></Slider>
+  </div>
 </template>
 
 <script setup>
@@ -15,6 +18,9 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { ref } from "vue";
+import Slider from "./components/slider.vue"
+
+
 
 //kicking force
 let percentage = ref(30);
@@ -176,8 +182,10 @@ const render = () => {
 };
 render();
 
+//changing to kicking on keypress "enter/return"
 let isClick = false;
-window.addEventListener("click", () => {
+window.addEventListener("keypress", (e) => {
+  if(e.keyCode == 13) {
   if (isClick) return;
   isClick = true;
   ballBody.applyForce(
@@ -194,6 +202,7 @@ window.addEventListener("click", () => {
     ballBody.velocity.set(0, 0, 0);
     ballBody.angularVelocity.set(0, 0, 0);
   }, 2000);
+}
 });
 </script>
 
@@ -215,5 +224,9 @@ h1 {
   top: 0;
   z-index: 10;
   color: white;
+}
+
+.slider {
+   align-items: center;
 }
 </style>

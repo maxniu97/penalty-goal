@@ -10,7 +10,8 @@
     "cannon-es": "^0.20.0",
     "gsap": "^3.11.4",
     "three": "^0.149.0",
-    "vue": "^3.2.13"
+    "vue": "^3.2.13",
+    "vue-slider-component": "^4.1.0-beta.7"
   },
   "devDependencies": {
     "@vue/cli-service": "~5.0.0"
