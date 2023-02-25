@@ -1,19 +1,16 @@
 <template>
   <div class="slider">
-    <div class="power">
-      <h1>kicking power</h1>
-      <vue-Slider v-model="kickingPower"></vue-Slider>
-    </div>
-    <div class="angle">
-      <h1>kicking angle</h1>
-      <vue-Slider v-model="kickingAngle"></vue-Slider>
-    </div>
+    <span class="text">Power</span>
+    <el-slider v-model="kickingPower"></el-slider>
+  </div>
+  <div class="slider">
+    <span class="text">Angle</span>
+    <el-slider v-model="kickingAngle"></el-slider>
   </div>
 </template>
 
 <script>
-import VueSlider from "vue-slider-component";
-//import 'vue-slider-component/theme/default.css'
+
 
 export default {
   data() {
@@ -22,12 +19,34 @@ export default {
       kickingAngle: 0,
     };
   },
-  components: {
-    VueSlider,
-  },
+  
 };
 </script>
-]
-<style scoped>
 
+<style scoped>
+.slider {
+  display: flex;
+  align-items: center;
+ 
+}
+.slider .el-slider {
+  margin-top: 0;
+  margin-left: 0px;
+
+}
+.slider .text {
+  font-size: 24px;
+  color: black;
+  line-height: 44px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 0;
+ 
+}
+.slider .text + .el-slider {
+  flex: 0 0 70%;
+
+}
 </style>

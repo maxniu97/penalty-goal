@@ -2,8 +2,8 @@
   <div>
     <h1>{{ percentage }}</h1>
   </div>
-  <div class="slider">
-    <Slider></Slider>
+  <div  class="slider">
+    <Slider class="slide"></Slider>
   </div>
 </template>
 
@@ -219,14 +219,24 @@ canvas {
   height: 100vh;
 }
 h1 {
-  position: fixed;
-  left: 0;
-  top: 0;
+  position:relative;
   z-index: 10;
   color: white;
+  text-align: center;
 }
 
 .slider {
-   align-items: center;
-}
+   box-sizing: border-box;
+   position: relative;
+   left: 25%;
+   bottom: 1;
+   background-color: aliceblue;
+   z-index: 1;
+   width: 50%;
+   border-radius: 5px;
+   padding: 0%;
+  
+   }
+   
+
 </style>
