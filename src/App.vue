@@ -2,7 +2,7 @@
   <div>
     <h1>{{ percentage }}</h1>
   </div>
-  <div  class="slider">
+  <div class="slider">
     <Slider class="slide"></Slider>
   </div>
 </template>
@@ -18,9 +18,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { ref } from "vue";
-import Slider from "./components/slider.vue"
-
-
+import Slider from "./components/slider.vue";
 
 //kicking force
 let percentage = ref(30);
@@ -113,14 +111,13 @@ gltfLoader.load("./model/playground02.glb", (gltf) => {
       world.addBody(trimeshBody);
 
       //goal
-      if(child.name == "door") {
+      if (child.name == "door") {
         child.material = new THREE.MeshBasicMaterial({
-          color:0x000000,
+          color: 0x000000,
           opacity: 0,
           transparent: true,
-        })
+        });
       }
-
     }
     if (child.name == "Soccer_Ball") {
       ball = child;
@@ -182,27 +179,30 @@ const render = () => {
 };
 render();
 
+
+
 //changing to kicking on keypress "enter/return"
 let isClick = false;
 window.addEventListener("keypress", (e) => {
-  if(e.keyCode == 13) {
-  if (isClick) return;
-  isClick = true;
-  ballBody.applyForce(
-    new CANNON.Vec3(
-      -10 * percentage.value,
-      6 * percentage.value,
-      (Math.random() - 0.5) * percentage.value
-    ),
-    ballBody.position
-  );
-  setTimeout(() => {
-    isClick = false;
-    ballBody.position.set(0, 15, 0);
-    ballBody.velocity.set(0, 0, 0);
-    ballBody.angularVelocity.set(0, 0, 0);
-  }, 2000);
-}
+  if (e.keyCode == 13) {
+    if (isClick) return;
+    isClick = true;
+    //the kicking
+    ballBody.applyForce(
+      new CANNON.Vec3(
+        -10 * percentage.value,
+        6 * percentage.value,
+        (Math.random() - 0.5) * percentage.value
+      ),
+      ballBody.position
+    );
+    setTimeout(() => {
+      isClick = false;
+      ballBody.position.set(0, 15, 0);
+      ballBody.velocity.set(0, 0, 0);
+      ballBody.angularVelocity.set(0, 0, 0);
+    }, 2000);
+  }
 });
 </script>
 
@@ -219,24 +219,24 @@ canvas {
   height: 100vh;
 }
 h1 {
-  position:relative;
+  position: relative;
   z-index: 10;
   color: white;
   text-align: center;
 }
 
 .slider {
-   box-sizing: border-box;
-   position: relative;
-   left: 25%;
-   bottom: 1;
-   background-color: aliceblue;
-   z-index: 1;
-   width: 50%;
-   border-radius: 5px;
-   padding: 0%;
+  position: absolute;
+ 
+  display: flex;
+  box-sizing: border-box;
+  bottom: 5%;
+  left:25%;
+  background-color: rgb(197, 208, 218);
+  z-index: 1;
+  width: 50%;
+  border-radius: 5px;
+  padding: 10px;
   
-   }
-   
-
+}
 </style>
